@@ -2,13 +2,8 @@
 
 - include_vars: "{{ ansible_os_family|lower }}.yml"
 
-- name: Install unzip | Debian
-  apt: name=unzip state=present
-  when: ansible_os_family|lower == 'debian'
-
-- name: Install unzip | RedHat
-  yum: name=unzip state=present
-  when: ansible_os_family|lower == 'redhat'
+- name: Install unzip
+  package: name=unzip state=present
 
 - name: Create consul-template directory structure
   file:
